@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build Docker images
-      run: docker-compose up -d
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Build docker image
+      run: |
+        cd Api
+        docker build -t api:latest -f Dockerfile .
